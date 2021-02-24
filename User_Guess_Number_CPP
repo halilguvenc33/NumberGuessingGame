@@ -1,0 +1,162 @@
+# NumberGuessingGame
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+
+
+int ProduceRandomNumber_PC()  // number generator for human guess process
+{
+    srand((unsigned)time(NULL));
+
+    int rand_num;
+    int num[4];
+
+    for (int i = 0; i < 4; i++)
+    {
+        num[i] = rand() % 10; // random number assign for num[0], num[1], num[2], num[3],
+    }
+    while (true) // controlling same number for every digit 
+    {
+        if (!(num[0] == num[1] || num[1] == num[2] || num[2] == num[3] || num[3] == num[1] || num[3] == num[0] || num[2] == num[0]))
+
+            break;
+        for (int i = 0; i < 4; i++)
+        {
+            num[i] = rand() % 10; 
+        }
+        if (num[3] == 0) { num[3]++; } // controlling n[3] for different then 0 
+   
+    }
+
+    rand_num = num[0] + (num[1] * 10) + (num[2] * 100) + (num[3] * 1000); // achieve random number
+
+    return rand_num; 
+}
+bool NumberControl(int user_num) // user_num controlling that is in the desired scale 
+{   
+    if (!(999 < user_num < 10000)) { // user_num must be in 999 to 10000
+        return false;
+    }
+    else
+    {
+        int num[4];
+        num[0] = user_num / 1000;
+        num[1] = (user_num % 1000) / 100;
+        num[2] = ((user_num % 1000) % 100) / 10;
+        num[3] = ((user_num % 1000) % 100) % 10;
+
+        if (num[0] == num[1] || num[1] == num[2] || num[2] == num[3] || num[3] == num[1] || num[3] == num[0] || num[2] == num[0] )  // controlling digit these are different each other
+        
+            return false;
+        
+        else
+        
+            return true;
+          
+    }
+}
+int DigitControl_Plus(int user_num, int pc_random)  // controlling pc_random and user_num that decided which digit(s) is(are) same
+{
+    int user_numm[4];
+    int pc_num[4];
+    int count_pos = 0;
+    user_numm[0] = user_num / 1000;
+    user_numm[1] = (user_num % 1000) / 100;
+    user_numm[2] = ((user_num % 1000) % 100) / 10;
+    user_numm[3] = ((user_num % 1000) % 100) % 10;
+   
+
+    pc_num[0] = pc_random / 1000;
+    pc_num[1] = (pc_random % 1000) / 100;
+    pc_num[2] = ((pc_random % 1000) % 100) / 10;
+    pc_num[3] = ((pc_random % 1000) % 100) % 10;
+    
+    // 0. digit control
+    if (pc_num[0] == user_numm[0]) {
+        count_pos = count_pos + 1;
+    }
+
+    // 1. digit control
+    if (pc_num[1] == user_numm[1]) {
+        count_pos = count_pos + 1;
+    }
+
+    // 2. digit control
+    if (pc_num[2] == user_numm[2]) {
+        count_pos = count_pos + 1;
+    }
+
+    // 3. digit control
+    if (pc_num[3] == user_numm[3]) {
+        count_pos = count_pos + 1;
+    }
+
+   return count_pos;  // true number true digit
+}
+int DigitControl_Neg(int user_num, int pc_random)  //controlling pc_random and user_num that decided digit(s) true but place is wrong
+{
+    int user_numm[4];
+    int pc_num[4];
+    int count_neg=0;
+    user_numm[0] = user_num / 1000;
+    user_numm[1] = (user_num % 1000) / 100;         // assign digits for user_num
+    user_numm[2] = ((user_num % 1000) % 100) / 10;
+    user_numm[3] = ((user_num % 1000) % 100) % 10;
+
+    pc_num[0] = pc_random / 1000;
+    pc_num[1] = (pc_random % 1000) / 100;           // assign digits for pc_random
+    pc_num[2] = ((pc_random % 1000) % 100) / 10;
+    pc_num[3] = ((pc_random % 1000) % 100) % 10;
+
+    if (pc_num[0] == user_numm[1] || pc_num[0] == user_numm[2] || pc_num[0] == user_numm[3]) {
+        count_neg = count_neg + 1;
+    }
+
+    if (pc_num[1] == user_numm[0] || pc_num[1] == user_numm[2] || pc_num[1] == user_numm[3]) {
+        count_neg = count_neg + 1;
+    }
+
+    if (pc_num[2] == user_numm[0] || pc_num[2] == user_numm[1] || pc_num[2] == user_numm[3]) {
+        count_neg = count_neg + 1;
+    }
+    if (pc_num[3] == user_numm[0] || pc_num[3] == user_numm[1] || pc_num[3] == user_numm[2]) {
+        count_neg = count_neg + 1;
+    }
+    return count_neg;  // true number wrong digit
+}
+
+int main()
+{
+    int pc_random;
+    int user_guess=999;
+    bool correct_input;
+    int increase, decrease, count=0;
+    pc_random = ProduceRandomNumber_PC();
+    increase = 1;
+    decrease = 1;
+    while (!(pc_random == user_guess) && (increase || decrease))
+    {   
+        std::cout << "Enter the Guess" << std::endl;
+        std::cin >> user_guess;
+        correct_input = NumberControl(user_guess);
+        while (!correct_input)
+        {
+            std::cout << "Yanlis sayi girildi!  Lütfen Bir Sayi giriniz: " << std::endl;
+            std::cin >> user_guess;
+            correct_input = NumberControl(user_guess);
+        }
+ 
+        
+            increase = DigitControl_Plus(user_guess, pc_random); // true number true digit
+            decrease = DigitControl_Neg(user_guess, pc_random);  // true number wrong digit
+            
+
+        if(!(pc_random == user_guess))
+        std::cout <<" + " << increase << "     " << " - " <<decrease << std::endl;
+        count = count + 1;
+    }
+    std::cout << user_guess <<" is true. " << "You found it "<< count << ".try" << std::endl;
+    
+    return 0;
+}
