@@ -1,0 +1,18 @@
+# NumberGuessingGame
+Yazılım 2 kısımdan oluşmaktadır.
+1. Kısım : Bilgisayarın hafızasında tuttuğu sayıyı bilgisayar yönlendirmeleriyle tahmin edilmesi beklenmektedir. 
+2. Kısım : Bilgisayar kullanıcının hafızasında tuttuğu sayıyı kullanıcı yönlendirmeleriyle tahmin etmeye çalışmaktadır.
+
+1. Kısım çalışmaları C++ üzerinden geliştirilmiş ve sonrasında arayüz çalışmaları için C# koduna dönüştürülerek arayüz çalışmaları tamamlanmıştır. 
+C++ ve C# kodları üzerinde gerekli testler yapılmış ve sistemin doğru çalıştığından emin olunmuştur.
+
+2. Kısım çalışmalarında kendim bir algoritma geliştirmeye çalıştım ancak başarılı olamadım.
+İnternet üzerinden bulduğum bir kodda bu işlem C dile ile yapılmıştı.
+Bu kod üzerinde düzenlemeler yaparak ve kodu C++'a optimize ederek gerekli testler yapılmış 
+ve kurgulanan algoritmanın doğru çalıştığından yapılan testler sonucunda emin olunmuştur.(Ortalama 5 denemede kullanıcının aklında tuttuğu sayı tahmin ediliyor ) 
+Söz konusu algotirmanın C# üzerine optimizasyonu konusunda sorunlar oluşmuştur ve tasarlanan arayüzde bu kısım başarılı bir şekilde çalışmamaktadır. 
+C# dilinde yetkinliğim diğer dillere göre alt seviyede olduğu için bu konuda bir ilerleme kaydedemedim. Ancak sorunun çözümüyle alakalı çalışmalara devam edeceğim. 
+Projeyi teslim tarihim geldiği için projeyi bu şekilde size göndermek durumunda kaldım.
+
+Belirtilen 2 kısım içinde C++ kodları .txt dosyası içerisinde bu belgenin bulunduğu dosya içerisinde tarafınıza ulaştırılacaktır.
+
