@@ -12,10 +12,10 @@ namespace NumberGuessingGame
 {
     public partial class Form1 : Form
     {
-        int dijit_no = 4;
+        int dijit_no = 4;             
         int dijit1_num = 0;
         int dijit10_num = 0;
-        int dijit100_num = 0;
+        int dijit100_num = 0;            // variable describing 
         int dijit1000_num = 0;
         int game_count = 1;
         int pc_secret_num = 0;
@@ -43,67 +43,67 @@ namespace NumberGuessingGame
             guess_user_number(0, 0);
         }
 
-        private void zero_btn_Click(object sender, EventArgs e)
+        private void zero_btn_Click(object sender, EventArgs e) // button assign for 0
         {
             write_num_textbox(0);
             zero_btn.Enabled = false;
         }
 
-        private void one_btn_Click(object sender, EventArgs e)
+        private void one_btn_Click(object sender, EventArgs e) // button assign for 1
         {
             write_num_textbox(1);
             one_btn.Enabled = false;
         }
 
-        private void two_btn_Click(object sender, EventArgs e)
+        private void two_btn_Click(object sender, EventArgs e) // button assign for 2
         {
             write_num_textbox(2);
             two_btn.Enabled = false;
         }
 
-        private void three_btn_Click(object sender, EventArgs e)
+        private void three_btn_Click(object sender, EventArgs e) // button assign for 3
         {
             write_num_textbox(3);
             three_btn.Enabled = false;
         }
 
-        private void four_btn_Click(object sender, EventArgs e)
+        private void four_btn_Click(object sender, EventArgs e) // button assign for 4
         {
             write_num_textbox(4);
             four_btn.Enabled = false;
         }
 
-        private void five_btn_Click(object sender, EventArgs e)
+        private void five_btn_Click(object sender, EventArgs e) // button assign for 5
         {
             write_num_textbox(5);
             five_btn.Enabled = false;
         }
 
-        private void six_btn_Click(object sender, EventArgs e)
+        private void six_btn_Click(object sender, EventArgs e) // button assign for 6
         {
             write_num_textbox(6);
             six_btn.Enabled = false;
         }
 
-        private void seven_btn_Click(object sender, EventArgs e)
+        private void seven_btn_Click(object sender, EventArgs e) // button assign for 7
         {
             write_num_textbox(7);
             seven_btn.Enabled = false;
         }
 
-        private void eigth_btn_Click(object sender, EventArgs e)
+        private void eigth_btn_Click(object sender, EventArgs e) // button assign for 8
         {
             write_num_textbox(8);
             eigth_btn.Enabled = false;
         }
 
-        private void nine_btn_Click(object sender, EventArgs e)
+        private void nine_btn_Click(object sender, EventArgs e) // button assign for 9
         {
             write_num_textbox(9);
             nine_btn.Enabled = false;
         }
 
-        private void enter_pc_btn_Click(object sender, EventArgs e)
+        private void enter_pc_btn_Click(object sender, EventArgs e) // button assign for ENTER
         {
             int user_num = get_number(dijit1_num, dijit10_num, dijit100_num, dijit1000_num);
 
@@ -116,12 +116,12 @@ namespace NumberGuessingGame
             clear_objects();
         }
 
-        private void delete_btn_Click(object sender, EventArgs e)
+        private void delete_btn_Click(object sender, EventArgs e) // button assign for DELETE
         {
             clear_objects();
         }
 
-        private void write_num_textbox(int num)
+        private void write_num_textbox(int num) 
         {
             switch (dijit_no)
             {
@@ -192,7 +192,7 @@ namespace NumberGuessingGame
             return dijit1 + (dijit10 * 10) + (dijit100 * 100) + (dijit1000 * 1000);
         }
 
-        private void clear_objects()
+        private void clear_objects()  // clearing texbox
         {
             dijit1_txt.Text = String.Empty;
             dijit10_txt.Text = String.Empty;
@@ -245,9 +245,9 @@ namespace NumberGuessingGame
             return count_pos;  // true number true digit
         }
 
-        int DigitControl_Neg(int user_num, int pc_random)  //controlling pc_random and user_num that decided digit(s) true but place is wrong
+        int DigitControl_Neg(int user_num, int pc_random)  //controlling pc_random and user_num, after that decided digit(s) true but place is wrong
         {
-            int[] user_numm = new int[4];
+            int[] user_numm = new int[4];  
             int[] pc_num = new int[4];
             int count_neg = 0;
             user_numm[0] = user_num / 1000;
@@ -260,25 +260,25 @@ namespace NumberGuessingGame
             pc_num[2] = ((pc_random % 1000) % 100) / 10;
             pc_num[3] = ((pc_random % 1000) % 100) % 10;
 
-            if (pc_num[0] == user_numm[1] || pc_num[0] == user_numm[2] || pc_num[0] == user_numm[3])
+            if (pc_num[0] == user_numm[1] || pc_num[0] == user_numm[2] || pc_num[0] == user_numm[3]) // controlling 0.digit for negative output
             {
                 count_neg = count_neg + 1;
             }
 
-            if (pc_num[1] == user_numm[0] || pc_num[1] == user_numm[2] || pc_num[1] == user_numm[3])
+            if (pc_num[1] == user_numm[0] || pc_num[1] == user_numm[2] || pc_num[1] == user_numm[3]) // controlling 1.digit for negative output
             {
                 count_neg = count_neg + 1;
             }
 
-            if (pc_num[2] == user_numm[0] || pc_num[2] == user_numm[1] || pc_num[2] == user_numm[3])
+            if (pc_num[2] == user_numm[0] || pc_num[2] == user_numm[1] || pc_num[2] == user_numm[3]) // controlling 2.digit for negative output
             {
                 count_neg = count_neg + 1;
             }
-            if (pc_num[3] == user_numm[0] || pc_num[3] == user_numm[1] || pc_num[3] == user_numm[2])
+            if (pc_num[3] == user_numm[0] || pc_num[3] == user_numm[1] || pc_num[3] == user_numm[2])  // controlling 3.digit for negative output
             {
                 count_neg = count_neg + 1;
             }
-            return count_neg;  // true number wrong digit
+            return count_neg;  // true number-wrong digit value
         }
 
         int produce_random_number() 
@@ -363,7 +363,7 @@ namespace NumberGuessingGame
         private int guess_user_number(int plus_val, int minus_val) 
         {    
             label2:
-                if (r == 10000)
+                if (r == 10000) // program finish wher r counter reach 10000
                 {
                     return -1;
                 }
@@ -378,29 +378,29 @@ namespace NumberGuessingGame
                 else
                 {
                     n = r;
-                    d[j] = n % 10; n = n / 10;
-                    c[j] = n % 10; n = n / 10;
-                    b[j] = n % 10; n = n / 10;
-                    a[j] = n % 10; n = n / 10;
+                    d[j] = n % 10; n = n / 10;  // r is counting and program assign this value for d[j]
+                    c[j] = n % 10; n = n / 10;  // r is counting and program assign this value for c[j] // We trying all possibility sequentialy
+                    b[j] = n % 10; n = n / 10;  // r is counting and program assign this value for b[j]
+                    a[j] = n % 10; n = n / 10;  // r is counting and program assign this value for a[j]
                     r = r + 1;
                 }
                 if ((a[j] == b[j] || a[j] == c[j] || a[j] == d[j]) || (b[j] == c[j] || b[j] == d[j]) || (c[j] == d[j])) { goto label2; }
-            label3:
-                if (a[j] == b[i] || a[j] == c[i] || a[j] == d[i]) { C[j] = C[j] + 1; }
-                if (a[j] == a[i]) { B[j] = B[j] + 1; }
-                if (b[j] == a[i] || b[j] == c[i] || b[j] == d[i]) { C[j] = C[j] + 1; }
+                label3:
+                if (a[j] == b[i] || a[j] == c[i] || a[j] == d[i]) { C[j] = C[j] + 1; }  // controlling true number-wrong digits about user_num and pc_guess. 
+                if (a[j] == a[i]) { B[j] = B[j] + 1; }                                  // controlling true number-true digit about user_num and pc_guess.
+                if (b[j] == a[i] || b[j] == c[i] || b[j] == d[i]) { C[j] = C[j] + 1; }  // B[] counting for true digit-true number value. C[] counting for wrong digit true number
                 if (b[j] == b[i]) { B[j] = B[j] + 1; }
-                if (c[j] == b[i] || c[j] == a[i] || c[j] == d[i]) { C[j] = C[j] + 1; }
+                if (c[j] == b[i] || c[j] == a[i] || c[j] == d[i]) { C[j] = C[j] + 1; }  
                 if (c[j] == c[i]) { B[j] = B[j] + 1; }
-                if (d[j] == b[i] || d[j] == c[i] || d[j] == a[i]) { C[j] = C[j] + 1; }
+                if (d[j] == b[i] || d[j] == c[i] || d[j] == a[i]) { C[j] = C[j] + 1; }  
                 if (d[j] == d[i]) { B[j] = B[j] + 1; }
                 while (i > 0)
                 {
-                    if (B[j] != B[i] || C[j] != C[i])
+                    if (B[j] != B[i] || C[j] != C[i]) // controlling befor-after value about B[] and C[] and decided situation.
                     {
-                        B[j] = C[j] = 0;
-                        i = t;
-                        goto label2;
+                        B[j] = C[j] = 0;              // (B[j] != B[i] || C[j] != C[i]) = 1 is mean--> there is no digit equality about user_num and pc_guess. 
+                    i = t;
+                        goto label2;                  
                     }
                     i = i - 1;
                     B[j] = C[j] = 0;
@@ -408,10 +408,10 @@ namespace NumberGuessingGame
                 }
                 i = t + 1; t = i; r = 1000;
 
-                a[i] = a[j];
-                b[i] = b[j];
-                c[i] = c[j];
-                d[i] = d[j];
+                a[i] = a[j];  // a[i] taking equal to a[j] for next step controlling    ---We can think about that. a[i] value is current state, a[j] is future state
+                b[i] = b[j];  // b[i] taking equal to a[j] for next step controlling    
+                c[i] = c[j];  // c[i] taking equal to a[j] for next step controlling
+                d[i] = d[j];  // d[i] taking equal to a[j] for next step controlling
 
                 return get_number(d[j], c[j], b[j], a[j]);
         }
